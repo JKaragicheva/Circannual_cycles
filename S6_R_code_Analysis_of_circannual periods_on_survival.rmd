@@ -17,7 +17,6 @@ The R code for the presented in the paper analyses, assessing the relationships 
 Install required packages
 
 ```{r, eval = FALSE}
-
 #install.packages(c('MCMCglmm','snow','geiger','phytools','phangorn'))
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
@@ -152,22 +151,22 @@ model2$DIC
 ## get phylogenetic data
 Go to https://birdtree.org/subsets/, paste the listed below species' names in the requested window, select 'Hackett All Species' as a source of trees, set the number of trees to create to 10 000, and download the trees
 
-Calidris_canutus
-Calidris_tenuirostris   
-Parus_cristatus       
-Sylvia_borin 
-Sylvia_atricapilla
-Phylloscopus_trochilus
-Phylloscopus_collybita
-Sturnus_vulgaris        
-Saxicola_torquatus   
-Ficedula_hypoleuca   
-Ficedula_albicollis     
-Loxia_curvirostra
-Fringilla_coelebs    
-Fringilla_montifringilla
-Junco_hyemalis   
-Passer_montanus
+- Calidris_canutus
+- Calidris_tenuirostris
+- Parus_cristatus
+- Sylvia_borin
+- Sylvia_atricapilla
+- Phylloscopus_trochilus
+- Phylloscopus_collybita
+- Sturnus_vulgaris
+- Saxicola_torquatus
+- Ficedula_hypoleuca   
+- Ficedula_albicollis
+- Loxia_curvirostra
+- Fringilla_coelebs-
+- Fringilla_montifringilla
+- Junco_hyemalis
+- Passer_montanus
 
 Note that model outputs may vary depending on the subset of trees used in the analyses
 
@@ -189,7 +188,7 @@ To procede, one has to make the trees ultrametric
 
 ```{r, eval = FALSE}
 for (i in 1:100){
-tr-full[[i]] <- nnls.tree(cophenetic(trees[[i]]),trees[[i]],rooted=TRUE)
+   tr-full[[i]] <- nnls.tree(cophenetic(trees[[i]]), trees[[i]], rooted=TRUE)
 }
 
 is.ultrametric(tr-full)
@@ -323,13 +322,14 @@ extract_pMCMC<-function(model_name) {
 
   for(i in 1:length(Files)){
      mod<-load(Files[i])
-	 pMCMC_intercept <-c(pMCMC_intercept, summary(model)$solutions[17])
+     pMCMC_intercept <-c(pMCMC_intercept, summary(model)$solutions[17])
      pMCMC_cycle <-c(pMCMC_cycle, summary(model)$solutions[18])
      pMCMC_slope_cycle_0 <-c(pMCMC_slope_cycle_0, summary(model)$solutions[19])
      pMCMC_slope_cycle_1 <-c(pMCMC_slope_cycle_1, summary(model)$solutions[20])
   }
-  Res<-list(pMCMC_intercept=pMCMC_intercept,pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,
-       pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
+  Res<-list(pMCMC_intercept=pMCMC_intercept,pMCMC_cycle=pMCMC_cycle,
+            pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,
+            pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
   return(Res)
 }
 ```
@@ -349,10 +349,10 @@ summary(pMCMC$pMCMC_slope_cycle_1)
 extract_fixed<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_chain'))
   cat(length(Files), 'files found\n')
-    Intercept<-c()
-    cycle_nr_1<-c()
-    slope_cycle_0<-c()
-    slope_cycle_1<-c()
+  Intercept<-c()
+  cycle_nr_1<-c()
+  slope_cycle_0<-c()
+  slope_cycle_1<-c()
  
   for(i in 1:length(Files)){
      mod<-load(Files[i])
@@ -404,8 +404,8 @@ extract_random<-function(model_name) {
      units_post <-c(units_post, model$VCV[,6])
   }
   Res<-list(uniqueid_post=uniqueid_post, Trait_post=Trait_post,
-       Reference_post=Reference_post,animal_post=animal_post, 
-       species_post=species_post,units_post=units_post)
+            Reference_post=Reference_post,animal_post=animal_post, 
+            species_post=species_post,units_post=units_post)
   return(Res)
 }
 ```
