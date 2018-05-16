@@ -163,7 +163,7 @@ Go to https://birdtree.org/subsets/, paste the listed below species' names in th
 - Ficedula_hypoleuca   
 - Ficedula_albicollis
 - Loxia_curvirostra
-- Fringilla_coelebs-
+- Fringilla_coelebs
 - Fringilla_montifringilla
 - Junco_hyemalis
 - Passer_montanus
