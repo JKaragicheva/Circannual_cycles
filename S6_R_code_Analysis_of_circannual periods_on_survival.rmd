@@ -184,7 +184,7 @@ tr_full<-sample(10000,100,replace = FALSE, prob = NULL)
 
 is.ultrametric(trees[tr_full])
 ```
-To procede, one has to make the trees ultrametric
+To proceed, one has to make the trees ultrametric
 
 ```{r, eval = FALSE}
 for (i in 1:100){
